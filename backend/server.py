@@ -10,6 +10,9 @@ from typing import List
 import uuid
 from datetime import datetime, timezone
 
+# Import routes
+from routes import market_router, indicators_router, strategies_router, backtest_router
+
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -20,7 +23,11 @@ client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
 # Create the main app without a prefix
-app = FastAPI()
+app = FastAPI(
+    title="MoonLight AI Trading System",
+    description="Advanced AI-powered trading system with technical analysis and backtesting",
+    version="1.0.0"
+)
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
