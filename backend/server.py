@@ -73,8 +73,14 @@ async def get_status_checks():
     
     return status_checks
 
-# Include the router in the main app
+# Include the main API router
 app.include_router(api_router)
+
+# Include MoonLight AI Trading System routers
+app.include_router(market_router, prefix="/api")
+app.include_router(indicators_router, prefix="/api")
+app.include_router(strategies_router, prefix="/api")
+app.include_router(backtest_router, prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,
