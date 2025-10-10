@@ -1,0 +1,82 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# MoonLight Specific
+configs/app.yaml
+configs/*.yaml
+!configs/app.example.yaml
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/*.csv
+data/*.parquet
+logs/*.log
+logs/*.log.*
+profiles/*/
+*.backup
+support_*.zip
+
+# Secrets
+.env
+.env.local
+secrets/
+*.key
+*.pem
+
+# Flutter
+ui_app/.dart_tool/
+ui_app/.flutter-plugins
+ui_app/.flutter-plugins-dependencies
+ui_app/.packages
+ui_app/build/
+ui_app/.pub-cache/
+ui_app/.pub/
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Documentation build
+docs/_build/
+site/
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Temporary
+*.tmp
+*.temp
+*.bak

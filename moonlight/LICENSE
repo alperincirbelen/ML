@@ -1,0 +1,64 @@
+MIT License
+
+Copyright (c) 2025 MoonLight Project
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+IMPORTANT DISCLAIMERS:
+
+1. EDUCATIONAL PURPOSE: This software is provided for educational and research
+   purposes only. It is not intended as financial advice or a recommendation
+   to trade.
+
+2. PLATFORM COMPLIANCE: Users are solely responsible for compliance with:
+   - Trading platform Terms of Service (TOS)
+   - Local financial regulations
+   - Anti-money laundering (AML) requirements
+   - Know Your Customer (KYC) requirements
+
+3. PROHIBITED USES: This software must NOT be used for:
+   - Bypassing anti-bot protections
+   - Circumventing 2FA/authentication
+   - Scraping or unauthorized data access
+   - Accessing accounts without authorization
+   - Violating platform rate limits
+
+4. NO WARRANTIES: Trading involves substantial risk. Past performance does not
+   guarantee future results. The authors and contributors make no warranties
+   about the software's performance, accuracy, or suitability.
+
+5. RISK ACKNOWLEDGMENT: Users acknowledge that:
+   - They may lose their entire investment
+   - Automated trading carries additional risks
+   - They are responsible for monitoring and managing their positions
+   - Kill-switch and guardrails are safeguards but not guarantees
+
+6. DATA PRIVACY: Users are responsible for:
+   - Protecting their credentials and API keys
+   - Complying with GDPR/KVKK data protection regulations
+   - Securing log files and database backups
+
+7. JURISDICTIONAL RESTRICTIONS: Binary/fixed-time trading may be restricted
+   or prohibited in certain jurisdictions. Users must verify legality in
+   their location before use.
+
+BY USING THIS SOFTWARE, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND
+AGREE TO THESE TERMS AND THE ASSOCIATED RISKS.

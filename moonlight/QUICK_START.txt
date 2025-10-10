@@ -1,0 +1,164 @@
+================================================================================
+                    🌙 MoonLight - Quick Start Guide
+                   Fixed-Time Trading AI - v1.0.0 MVP
+================================================================================
+
+📦 INSTALLATION (5 minutes)
+────────────────────────────────────────────────────────────────────────────
+
+1. Open PowerShell/CMD in moonlight folder
+
+2. Install Python dependencies:
+   pip install -r requirements.txt
+
+3. Create your config:
+   copy configs\app.example.yaml configs\app.yaml
+
+4. Initialize database:
+   python -c "import asyncio; from moonlight.core.storage import Storage; asyncio.run(Storage('data/trades.db').init()); print('✓ DB ready')"
+
+
+🎮 FIRST RUN (2 minutes)
+────────────────────────────────────────────────────────────────────────────
+
+Option 1 - Quick Test:
+   python quick_test.py
+
+Option 2 - Paper Trading (10 min):
+   python run_paper.py --duration 10
+
+Option 3 - Full Engine:
+   python -m moonlight.core.main --config configs/app.yaml
+
+
+🖥️ USER INTERFACE (Optional)
+────────────────────────────────────────────────────────────────────────────
+
+1. Open new terminal in ui_app folder
+
+2. Install Flutter dependencies:
+   flutter pub get
+
+3. Run desktop app:
+   flutter run -d windows
+
+
+📡 API ACCESS
+────────────────────────────────────────────────────────────────────────────
+
+Start API server:
+   python -m moonlight.core.api.server
+
+Visit: http://127.0.0.1:8750/docs
+Test:  curl http://127.0.0.1:8750/status
+
+
+📚 DOCUMENTATION
+────────────────────────────────────────────────────────────────────────────
+
+README.md ................... Main documentation
+INSTALL.md .................. Detailed installation
+docs/getting_started.md ..... 10-step tutorial
+docs/architecture.md ........ System design
+docs/strategy_development.md  Create strategies
+
+Full index: INDEX.md
+
+
+🔧 CONFIGURATION
+────────────────────────────────────────────────────────────────────────────
+
+Edit: configs/app.yaml
+
+Key settings:
+  mode: paper                    # paper | live
+  connector: mock                # mock | olymp
+  ensemble_threshold: 0.70       # Decision threshold
+  
+  accounts:                      # Your accounts (1-4)
+    - id: acc1
+      username: your@email.com
+      
+  products:                      # Trading pairs
+    - product: EURUSD
+      strategies: [5, 14, 15]    # Strategy IDs
+      
+  limits:                        # Safety
+    max_daily_loss: 5.0
+    max_consecutive_losses: 5
+
+
+🛡️ SAFETY FIRST
+────────────────────────────────────────────────────────────────────────────
+
+✅ Always start in PAPER mode
+✅ Test with MOCK connector first  
+✅ Set conservative limits
+✅ Use Kill Switch if needed
+✅ Review logs regularly
+
+❌ Never bypass 2FA/OTP
+❌ Never use anti-bot tricks
+❌ Never exceed rate limits
+
+
+🧪 VALIDATION
+────────────────────────────────────────────────────────────────────────────
+
+Run quick test:
+   python quick_test.py
+
+Expected output:
+   Test 1: Configuration Loading... ✓
+   Test 2: Database Initialization... ✓
+   Test 3: Technical Indicators... ✓
+   Test 4: Mock Connector... ✓
+   Test 5: Strategy System... ✓
+   Test 6: Ensemble & Calibration... ✓
+   Test 7: Risk Management... ✓
+   
+   Results: 7 passed, 0 failed
+
+
+📈 NEXT STEPS
+────────────────────────────────────────────────────────────────────────────
+
+1. ✅ Run paper trading for 1-2 weeks
+2. ✅ Analyze backtests
+3. ✅ Review win rate and metrics
+4. ✅ Validate guardrails
+5. ⚠️ Live mode requires real connector + approval
+
+
+🆘 TROUBLESHOOTING
+────────────────────────────────────────────────────────────────────────────
+
+Issue: Module not found
+Fix:   pip install -r requirements.txt
+
+Issue: Config validation failed
+Fix:   Check configs/app.yaml syntax
+
+Issue: Database locked
+Fix:   Close other Python processes
+
+Issue: No trades happening
+Fix:   Check permit window, win threshold, logs
+
+
+📞 SUPPORT
+────────────────────────────────────────────────────────────────────────────
+
+Logs:    logs/moonlight.log
+Docs:    docs/
+Tests:   python quick_test.py
+API:     http://127.0.0.1:8750/docs
+
+
+================================================================================
+                        🌙 MoonLight v1.0.0 MVP
+              Secure | Compliant | Modular | Well-Documented
+================================================================================
+
+Ready to start? → python run_paper.py --duration 10
+

@@ -1,0 +1,62 @@
+name: moonlight_ui
+description: MoonLight Desktop UI - Fixed-Time Trading AI Interface
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+  
+  # UI
+  material_symbols_icons: ^4.2719.1
+  google_fonts: ^6.1.0
+  fl_chart: ^0.65.0
+  data_table_2: ^2.5.9
+  
+  # Navigation
+  go_router: ^12.1.1
+  
+  # HTTP & WebSocket
+  dio: ^5.4.0
+  web_socket_channel: ^2.4.0
+  
+  # Storage
+  shared_preferences: ^2.2.2
+  
+  # Utilities
+  intl: ^0.18.1
+  uuid: ^4.2.2
+  path_provider: ^2.1.1
+  
+  # Windows specific
+  window_manager: ^0.3.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.7
+  riverpod_generator: ^2.3.9
+  custom_lint: ^0.5.7
+  riverpod_lint: ^2.3.7
+  msix: ^3.16.7
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+  
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter-Regular.ttf
+        - asset: fonts/Inter-Bold.ttf
+          weight: 700

@@ -1,0 +1,148 @@
+# MoonLight Configuration Example
+# Kopyalayın: cp app.example.yaml app.yaml
+
+config_version: "1.0.0"
+
+# Çalışma modu: paper (demo) | live (gerçek)
+mode: paper
+
+# Bağlayıcı: mock (test) | olymp (gerçek API - izinli uçlar gerektirir)
+connector: mock
+
+# Ensemble karar eşiği (0-1 arası)
+ensemble_threshold: 0.70
+
+# Limitler ve koruma bariyerleri
+limits:
+  max_parallel_global: null          # Toplam paralel işlem (null = sınırsız, TEHLİKELİ!)
+  max_parallel_per_account: null     # Hesap başına paralel (null = sınırsız)
+  max_daily_loss: 5.0                # Günlük maksimum kayıp (tutar birimi)
+  max_consecutive_losses: 5          # Ardışık kayıp limiti
+  rate_limit_per_min: 60             # Dakikalık maksimum istek
+
+# Hesaplar (4'e kadar)
+accounts:
+  - id: acc1
+    username: user1@example.com
+    profile_store: profiles/acc1/
+    keyring_service: moonlight-olymp
+    session:
+      http_user_agent: "MoonLight/1.0"
+      ws_heartbeat_s: 20
+
+  # - id: acc2
+  #   username: user2@example.com
+  #   profile_store: profiles/acc2/
+
+# Ürünler ve zaman dilimleri
+products:
+  - product: EURUSD
+    enabled: true
+    strategies: [5, 14, 15, 25, 32]  # Strateji ID'leri
+    timeframes:
+      - tf: 1                        # 1 dakika
+        enabled: true
+        win_threshold: 0.72          # Kazanma olasılığı eşiği
+        permit_min: 89               # Minimum payout %
+        permit_max: 93               # Maksimum payout %
+        risk:
+          lot: 1.0                   # Sabit tutar
+          tp_R: 1.5                  # Take profit (R-multiple)
+          sl_ATR_mult: 1.2           # Stop loss (ATR çarpanı)
+      
+      - tf: 5                        # 5 dakika
+        enabled: true
+        win_threshold: 0.72
+        permit_min: 90
+        permit_max: 93
+        risk:
+          lot: 1.0
+          tp_R: 1.8
+          sl_ATR_mult: 1.2
+      
+      - tf: 15                       # 15 dakika (kapalı)
+        enabled: false
+        win_threshold: 0.70
+        permit_min: 0
+        permit_max: 100
+
+  - product: BTCUSD
+    enabled: false                   # Başlangıçta kapalı
+    strategies: [14, 25, 35]
+    timeframes:
+      - tf: 1
+        enabled: true
+        win_threshold: 0.75
+        permit_min: 85
+        permit_max: 95
+        risk:
+          lot: 1.0
+          tp_R: 2.0
+          sl_ATR_mult: 1.5
+
+# Risk varsayılanları
+risk:
+  default_lot: 1.0
+  default_tp_R: 1.5
+  default_sl_ATR_mult: 1.2
+
+# Motor ayarları
+engine:
+  queue_maxsize: 2000              # Kuyruk boyutu
+  latency_warn_ms: 800             # Gecikme uyarı eşiği
+  latency_abort_ms: 2500           # Gecikme iptal eşiği
+  tick_interval_ms: 250            # Tick aralığı (TF=1 için)
+
+# Veritabanı
+storage:
+  sqlite_path: data/trades.db
+  dataset_csv: data/ml_dataset.csv
+  wal_mode: true                   # Write-Ahead Logging
+
+# Loglama
+logging:
+  level: INFO                      # DEBUG | INFO | WARN | ERROR
+  file: logs/moonlight.log
+  rotate_mb: 10                    # Dosya boyutu (MB)
+  keep_files: 7                    # Tutulacak dosya sayısı
+  format: json                     # json | text
+
+# Katalog (Payout cache)
+catalog:
+  refresh_sec: 30                  # Yenileme aralığı
+  ttl_sec: 120                     # Cache süresi
+  ewma_alpha: 0.3                  # EWMA yumuşatma
+  permit_mode: prefer_cache        # config_only | prefer_cache | cache_only
+  auto_threshold: true             # Dinamik eşik ayarı
+  margin: 0.02                     # Güvenlik payı
+
+# UI Tercihleri
+ui:
+  theme: dark                      # dark | light
+  colors:
+    primary: "#6D28D9"             # Mor
+    accent: "#2563EB"              # Mavi
+    success: "#10B981"             # Yeşil
+    danger: "#EF4444"              # Kırmızı
+  locale: tr-TR
+  timezone: Europe/Istanbul
+
+# API (Loopback)
+api:
+  host: 127.0.0.1
+  http_port: 8750
+  ws_port: 8751
+  cors_enabled: false
+  api_key: null                    # Opsiyonel koruma
+
+# Telemetri (opsiyonel)
+telemetry:
+  enabled: true
+  prometheus_port: null            # null = kapalı
+  snapshot_interval_sec: 30
+
+# Güvenlik
+security:
+  pii_masking: true                # PII maskeleme zorunlu
+  log_secrets: false               # Sırları loglamaz
+  enforce_tls: false               # Loopback için opsiyonel
