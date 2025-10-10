@@ -1,0 +1,142 @@
+# MoonLight Configuration Example
+# Parça 4 - Konfigürasyon Şeması
+config_version: "1.0.0"
+
+# Global ensemble eşiği (0-1 arası)
+ensemble_threshold: 0.72
+
+# Limitler ve koruma bariyerleri (Parça 6, 8)
+limits:
+  max_parallel_global: null  # null = kullanıcı belirlemeli
+  max_parallel_per_account: null
+  max_daily_loss: 5  # birim: işlem tutarı
+  max_consecutive_losses: 5
+  rate_limit_per_min: 60
+
+# Hesaplar (maksimum 4)
+accounts:
+  - id: acc1
+    username: user1@example.com
+    profile_store: data/profiles/acc1/
+    keyring_service: moonlight-olymp
+    session:
+      http_user_agent: "MoonLight/1.0"
+      ws_heartbeat_s: 20
+
+# Ürünler ve zaman dilimleri
+products:
+  - product: EURUSD
+    enabled: true
+    strategies: [5, 6, 14, 24, 25, 32]  # Strateji ID'leri
+    timeframes:
+      - tf: 1  # 1 dakika
+        enabled: true
+        win_threshold: 0.72
+        permit_min: 89
+        permit_max: 93
+        risk:
+          lot: 1.0
+          tp_R: 1.5
+          sl_ATR_mult: 1.2
+      - tf: 5  # 5 dakika
+        enabled: true
+        win_threshold: 0.72
+        permit_min: 90
+        permit_max: 93
+        risk:
+          lot: 1.0
+          tp_R: 1.8
+          sl_ATR_mult: 1.2
+      - tf: 15  # 15 dakika
+        enabled: false
+        win_threshold: 0.70
+        permit_min: 0
+        permit_max: 100
+        risk:
+          lot: 1.0
+
+  - product: BTCUSD
+    enabled: false
+    strategies: [14, 25, 35]
+    timeframes:
+      - tf: 1
+        enabled: true
+        win_threshold: 0.75
+        permit_min: 85
+        permit_max: 95
+        risk:
+          lot: 1.0
+          tp_R: 2.0
+          sl_ATR_mult: 1.5
+
+# Risk varsayılanları
+risk:
+  default_lot: 1.0
+  default_tp_R: 1.5
+  default_sl_ATR_mult: 1.2
+  daily_loss_cap: 5.0
+  consec_loss_cap: 5
+  cooldown_sec: 300
+
+# Motor ayarları (Parça 12)
+engine:
+  queue_maxsize: 2000
+  latency_warn_ms: 800
+  latency_abort_ms: 2500
+  tick_interval_ms: 250
+  grace_ms: 500
+  jitter_ms: 100
+  entry_cutoff_s: 5
+  lookback: 300
+
+# Depolama (Parça 6)
+storage:
+  sqlite_path: data/db/moonlight.db
+  dataset_csv: data/ml_dataset.csv
+  wal_mode: true
+
+# Loglama (Parça 13, 17)
+logging:
+  level: INFO  # DEBUG | INFO | WARN | ERROR
+  file: data/logs/moonlight.log
+  rotate_mb: 10
+  keep_files: 7
+  format: json
+
+# Katalog/Payout ayarları (Parça 11, 17)
+catalog:
+  refresh_sec: 30
+  ttl_soft_sec: 60
+  ttl_hard_sec: 300
+  ewma_alpha: 0.1
+  permit_mode: prefer_cache  # config_only | prefer_cache | cache_only
+  auto_threshold: true
+  margin: 0.02
+
+# UI ayarları (Parça 14, 18)
+ui:
+  theme: dark  # dark | light
+  colors:
+    primary: "#6D28D9"  # Mor
+    accent: "#2563EB"   # Mavi
+    success: "#10B981"  # Yeşil
+    danger: "#EF4444"   # Kırmızı
+    background_dark: "#0B0F14"
+    background_light: "#FFFFFF"
+  host: "127.0.0.1"
+  port: 8750
+  ws_port: 8751
+
+# Özellik bayrakları
+features:
+  read_only: false
+  trade_enabled: false  # Başlangıçta kapalı (güvenlik)
+  paper_mode: true      # Varsayılan paper mod
+
+# Bağlayıcı ayarları (Parça 5)
+connector:
+  type: mock  # mock | olymp
+  base_url: ""
+  ws_url: ""
+  timeout_s: 10
+  rate_limit_per_account: 15
