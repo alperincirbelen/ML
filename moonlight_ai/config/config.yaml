@@ -1,0 +1,83 @@
+# MoonLight AI Configuration
+# Ana konfigürasyon dosyası
+
+# Sistem Ayarları
+system:
+  name: "MoonLight AI"
+  version: "0.1.0"
+  environment: "development"  # development, testing, production
+  debug: true
+  log_level: "INFO"
+
+# API Ayarları
+api:
+  host: "localhost"
+  port: 8000
+  ssl_enabled: false
+  cors_origins: ["http://localhost:3000", "http://127.0.0.1:3000"]
+  
+# WebSocket Ayarları
+websocket:
+  host: "localhost"
+  port: 8001
+  max_connections: 100
+  heartbeat_interval: 30
+
+# Veritabanı Ayarları
+database:
+  type: "sqlite"
+  path: "data/moonlight.db"
+  backup_enabled: true
+  backup_interval: 3600  # saniye
+
+# Güvenlik Ayarları
+security:
+  jwt_secret_key: "your-secret-key-change-this"
+  jwt_algorithm: "HS256"
+  jwt_expiration: 3600  # saniye
+  encryption_key: "your-encryption-key-change-this"
+  max_login_attempts: 5
+  lockout_duration: 300  # saniye
+
+# Risk Yönetimi
+risk_management:
+  max_daily_loss: 100.0  # USD
+  max_position_size: 10.0  # USD
+  max_concurrent_trades: 3
+  stop_loss_percentage: 5.0
+  take_profit_percentage: 10.0
+
+# Strateji Ayarları
+strategy:
+  default_strategy: "simple_trend"
+  update_interval: 1  # saniye
+  lookback_period: 50  # bar sayısı
+  
+# Market Data Ayarları
+market_data:
+  update_interval: 1  # saniye
+  history_days: 30
+  symbols: ["EURUSD", "GBPUSD", "USDJPY"]
+
+# Logging Ayarları
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_path: "logs/moonlight.log"
+  max_file_size: 10485760  # 10MB
+  backup_count: 5
+
+# Backtest Ayarları
+backtest:
+  initial_balance: 1000.0
+  commission: 0.0
+  slippage: 0.0
+  start_date: "2023-01-01"
+  end_date: "2023-12-31"
+
+# Bildirim Ayarları
+notifications:
+  enabled: true
+  email_enabled: false
+  webhook_enabled: false
+  desktop_enabled: true
