@@ -1,0 +1,21 @@
+{
+  "account_id": "acc1",
+  "db_path": "data/trades.db",
+  "products": [
+    {
+      "product": "EURUSD",
+      "strategies": [5],
+      "timeframes": [
+        {"tf": 1,  "win_threshold": 0.70, "permit_min": 85, "permit_max": 95},
+        {"tf": 5,  "win_threshold": 0.70, "permit_min": 85, "permit_max": 95}
+      ]
+    },
+    {
+      "product": "BTCUSD",
+      "strategies": [5],
+      "timeframes": [
+        {"tf": 1,  "win_threshold": 0.72, "permit_min": 80, "permit_max": 95}
+      ]
+    }
+  ]
+}

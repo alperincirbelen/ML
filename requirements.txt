@@ -1,0 +1,2 @@
+# MoonLight PoC uses Python standard library only for the core.
+# No external dependencies are required for this PoC.
